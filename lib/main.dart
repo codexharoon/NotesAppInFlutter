@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/models/note_data.dart';
 import 'package:notes_app/pages/home_page.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+
+  // init hive
+  await Hive.initFlutter();
+
+  // open the hive box
+  await Hive.openBox('mybox');
+  
   runApp(const MyApp());
 }
 

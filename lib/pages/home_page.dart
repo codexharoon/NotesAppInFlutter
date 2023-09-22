@@ -15,6 +15,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  @override
+  void initState() {
+    Provider.of<NoteData>(context,listen: false).init();
+    super.initState();
+  }
 
   // on save note
   void saveNote(){
@@ -43,11 +48,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<NoteData>(
       builder: (context, value, child) => Scaffold(
-        // appBar: AppBar(),
         backgroundColor: CupertinoColors.systemGroupedBackground,
         body: Column(  
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
+            //header
             const Padding(
               padding: EdgeInsets.only(left: 25.0,top: 75),
               child: Text('Notes App',
@@ -58,27 +64,29 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            Expanded(
-              child: ListView.builder(
-                itemCount: value.getNotesList().length,
-                itemBuilder: (context, index) => CupertinoListSection.insetGrouped(
-                  children: [
-                    CupertinoListTile(
-                      title: Text(value.getNotesList()[index].text),
-                      trailing: IconButton(  
-                        onPressed: () => deleteNote(value.getNotesList()[index]),
-                        icon: Icon(Icons.delete,color: Colors.grey[400],),
-                      ),
-                      onTap: () {
-                        goToEditPage(value.getNotesList()[index], false);
-                      },
-                    )
-                  ],
-                ),
+            //notes list
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: value.getNotesList().length,
+              itemBuilder: (context, index) => CupertinoListSection.insetGrouped(
+                children: [
+                  CupertinoListTile(
+                    title: Text(value.getNotesList()[index].text),
+                    trailing: IconButton(  
+                      onPressed: () => deleteNote(value.getNotesList()[index]),
+                      icon: Icon(Icons.delete,color: Colors.grey[400],),
+                    ),
+                    onTap: () {
+                      goToEditPage(value.getNotesList()[index], false);
+                    },
+                  )
+                ],
               ),
-            )
+            ),
           ],
         ),
+
         floatingActionButton: FloatingActionButton(  
           backgroundColor: Colors.grey[400],
           onPressed: saveNote,

@@ -6,10 +6,10 @@ import 'package:notes_app/models/note_data.dart';
 import 'package:provider/provider.dart';
 
 class NoteEditPage extends StatefulWidget {
-  Note note;
-  bool isNewNote;
+  final Note note;
+  final bool isNewNote;
 
-  NoteEditPage({
+  const NoteEditPage({
     Key? key,
     required this.note,
     required this.isNewNote,
