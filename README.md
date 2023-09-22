@@ -1,16 +1,10 @@
-# notes_app
+# Notes App
 
-A new Flutter project.
+## Main Features
+- Can create update and delete notes.
+- Flutter Quill for Rich Text Editor.
+- Flutter Hive for local storage.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### UI
+![Screenshot_1695411656](https://github.com/codexharoon/NotesAppInFlutter/assets/104395720/a7a432de-7f70-4462-bda2-10d98629febb)
+![Screenshot_1695411665](https://github.com/codexharoon/NotesAppInFlutter/assets/104395720/6f56b58c-38a6-4a72-8855-0fff86e065c2)
