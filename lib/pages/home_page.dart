@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
 
     // go into the edit page 
     goToEditPage(note,true);
+
   }
 
   // route for edit page
@@ -57,20 +58,23 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            CupertinoListSection.insetGrouped(
-              children: List.generate(value.getNotesList().length,
-               (index) => 
-               CupertinoListSection.insetGrouped(  
-                children: [
-                  CupertinoListTile(
-                    title: Text(value.getNotesList()[index].text),
-                    trailing: IconButton(  
-                      onPressed: () => deleteNote(value.getNotesList()[index]),
-                      icon: Icon(Icons.delete,color: Colors.grey[400],),
-                    ),
-                  )
-                ],
-               )
+            Expanded(
+              child: ListView.builder(
+                itemCount: value.getNotesList().length,
+                itemBuilder: (context, index) => CupertinoListSection.insetGrouped(
+                  children: [
+                    CupertinoListTile(
+                      title: Text(value.getNotesList()[index].text),
+                      trailing: IconButton(  
+                        onPressed: () => deleteNote(value.getNotesList()[index]),
+                        icon: Icon(Icons.delete,color: Colors.grey[400],),
+                      ),
+                      onTap: () {
+                        goToEditPage(value.getNotesList()[index], false);
+                      },
+                    )
+                  ],
+                ),
               ),
             )
           ],
